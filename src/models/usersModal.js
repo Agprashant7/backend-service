@@ -16,14 +16,11 @@ const userSchema=new mongoose.Schema({
         min: 3,
         max: 20,
     },
-    // username: {
-    //     type: String,
-    //     require: false,
-    //     trim: true,
-    //     unique: false,
-    //     lowercase: true,
-    //     index: true,
-    // },
+    userId: {
+        type: String,
+        require: true,
+        index: true,
+    },
     email: {
         type: String,
         require: true,

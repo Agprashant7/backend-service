@@ -5,7 +5,8 @@ const validateSignUpRequest=[
     check('firstName').notEmpty().withMessage('First Name Required'),
     check('lastName').notEmpty().withMessage('Last Name Required'),
     check('email').notEmpty().withMessage('Email Required'),
-    check('password').isLength({min:6}).withMessage('Password must be 6 or more char '),
+    check('contactNo').notEmpty().withMessage('Contact No Required'),
+    check('password').isLength({min:4}).withMessage('Password must be 6 or more char '),
    
 ]
 
