@@ -36,9 +36,10 @@ const editTask=async (req,res)=>{
         dueDate:req.body.dueDate,
         status:req.body.status,
         comment:req.body.comment,
+        lastModified:new Date()
     }
 }
-    const task=await Task.update({taskId:req.body.taskId},update).then((data)=>{
+    const task=await Task.updateOne({taskId:req.body.taskId},update).then((data)=>{
         res.status(StatusCodes.OK).json({message:'Updated Succesfully',data})
     }).catch((err)=>{
         console.log("ERROR WHILE UPDATING TASK",err)

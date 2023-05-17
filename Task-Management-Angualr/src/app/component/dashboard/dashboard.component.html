@@ -1,0 +1,40 @@
+<div class="container-fluid bg-light">
+    <div class="container bg-light">
+
+        <div class="row mt-4" style="height: 500px;">
+            <div class="col"></div>
+            <div class="col-md-6 bg-white shadow">
+                <div class="card bg-warning mt-4">
+                    <h4 class="text-white ps-3 pt-2 pb-2">
+                       Task Creation
+                    </h4>
+                </div>
+                <div class="shadow mt-2">
+                    <div class="input-group flex-column p-4 gap-2">
+                        <div>
+                            <label>Task Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Task" name="task" [(ngModel)]='addTaskValue' required="">
+                        </div>
+                        <div>
+                            <label>Due Date</label>
+                            <input type="date" class="form-control" placeholder="Enter Due Date" name="dueDate" [(ngModel)]='addDueDate' required="">
+                        </div>
+                       <div class="text-center mt-4" *ngIf="!addDueDate || !addTaskValue">
+                        <button class="btn btn-success " type="button" [disabled]="true"  (click)="addTask()">Add</button>
+                    </div>
+                    <div class="text-center mt-4" *ngIf="addDueDate && addTaskValue">
+                        <button class="btn btn-success " type="button" [disabled]="false"  (click)="addTask()">Add</button>
+                    </div>
+                      </div>
+                </div>
+                <!-- <p>{{taskArr|json}}</p> -->
+
+                <app-todocard [taskArray]="taskArr" (deleteObj)="deleteTask($event)" (editObj)="editTask($event)" ></app-todocard>
+              </div>
+             
+            <div class="col"></div>
+        </div>
+
+    </div>
+
+</div>

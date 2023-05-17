@@ -10,10 +10,17 @@ app.use(cors());
 app.use(express.json())
 app.use('/api',authRouter)
 app.use('/task',taskRouter)
-const port=5000;
+const port=process.env.PORT||5000
 const start=async()=>{
     try{
         await connectDB();
+        if(process.env.NODE_ENV="production"){
+            app.use(express.static("Task-Management-Angualr/dist/my-app"))
+            const path=require("path");
+            app.get('*',(req,res)=>{
+                res.sendFile(path.resolve(__dirname,'Task-Management-Angualr','dist','my-app','index.html'))
+            })
+        }
         app.listen(port,()=>{
             console.log(`Server Up and running on ${port}`)
         })
